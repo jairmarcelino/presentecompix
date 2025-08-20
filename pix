@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Presente em Pix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+      margin: 0;
+    }
+    .card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+    }
+    h2 {
+      margin-bottom: 15px;
+      color: #2e7d32;
+    }
+    .pix-key {
+      font-size: 18px;
+      margin: 15px 0;
+      word-break: break-all;
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #2e7d32;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #1b5e20;
+    }
+    .msg {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #2e7d32;
+      display: none;
+    }
+    .qrcode {
+      margin-top: 20px;
+    }
+    .qrcode img {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Chave Pix</h2>
+    <div class="pix-key" id="pixKey">00020126360014BR.GOV.BCB.PIX0114+55169926225925204000053039865802BR5923Paola Brandao Fernandes6011Orlandia/SP62140510PAOLAEJOEL63048F22</div>
+    <button onclick="copiarPix()">Copiar chave</button>
+    <div class="msg" id="msgSucesso">✅ Chave Pix copiada!</div>
+    
+    <div class="qrcode">
+      <h3>Escaneie o QR Code</h3>
+      <img src="pix.png" alt="QR Code Pix">
+    </div>
+  </div>
+
+  <script>
+    function copiarPix() {
+      const chave = document.getElementById("pixKey").innerText;
+      navigator.clipboard.writeText(chave).then(() => {
+        const msg = document.getElementById("msgSucesso");
+        msg.style.display = "block";
+        setTimeout(() => msg.style.display = "none", 2000);
+      });
+    }
+  </script>
+</body>
+</html>
